@@ -18,6 +18,7 @@ builder.Services.AddScoped<IProduitService<Produit>,ProduitService>();
 builder.Services.AddScoped<ICllientService<Client>, ClientService>();
 builder.Services.AddScoped<ICategorieService<Categorie>, CategorieService>();
 builder.Services.AddScoped<IFactureLigneService<LigneFacture>, FactureLigneService>();
+builder.Services.AddScoped<IFactureService<Facture>, FactureService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
