@@ -8,7 +8,7 @@ namespace ElectroniqueApi.Model
         [Required]
         [StringLength(50, MinimumLength = 5)]
         public string Désignation { get; set; } = string.Empty;
-        public List<Produit> produitList { get; set;}
+        
 
     }
 }

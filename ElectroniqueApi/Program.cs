@@ -2,6 +2,7 @@ using ElectroniqueApi.Services;
 using Microsoft.EntityFrameworkCore;
 using ElectroniqueApi.Controllers;
 using ElectroniqueApi.Model;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,11 +15,11 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContextPool<AppDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("ElectroniqueApiContext"
 )));
-builder.Services.AddScoped<IProduitService<Produit>,ProduitService>();
-builder.Services.AddScoped<ICllientService<Client>, ClientService>();
-builder.Services.AddScoped<ICategorieService<Categorie>, CategorieService>();
-builder.Services.AddScoped<IFactureLigneService<LigneFacture>, FactureLigneService>();
-builder.Services.AddScoped<IFactureService<Facture>, FactureService>();
+builder.Services.AddTransient<IProduitService<Produit>,ProduitService>();
+builder.Services.AddTransient<ICllientService<Client>, ClientService>();
+builder.Services.AddTransient<ICategorieService<Categorie>, CategorieService>();
+builder.Services.AddTransient<IFactureLigneService<LigneFacture>, FactureLigneService>();
+builder.Services.AddTransient<IFactureService<Facture>, FactureService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -34,6 +35,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-
+app.UseCors(builder => builder.WithOrigins("http://localhost:3000"));
 
 app.Run();

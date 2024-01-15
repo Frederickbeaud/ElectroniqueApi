@@ -6,7 +6,7 @@
         public Produit Produit { get; set; }
         public int ProduitId { get; set; }
         public int quantité { get; set; }
-        public int FactureId { get; set; }
+        public byte FactureId { get; set; }
         public Facture Facture { get; set;}
     }
 }
