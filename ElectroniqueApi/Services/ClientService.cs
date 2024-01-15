@@ -13,7 +13,7 @@ namespace ElectroniqueApi.Services
         public async Task<Client> Add(Client t)
         {
             var result = await this.context.Clients.AddAsync(t);
-            this.context.SaveChangesAsync();
+            await this.context.SaveChangesAsync();
             return result.Entity;
         }
 
@@ -23,7 +23,7 @@ namespace ElectroniqueApi.Services
             if (p != null)
             {
                 context.Clients.Remove(p);
-                this.context.SaveChangesAsync();
+                await this.context.SaveChangesAsync();
                 return p;
             }
             return null;
@@ -54,7 +54,7 @@ namespace ElectroniqueApi.Services
 
 
 
-                this.context.SaveChangesAsync();
+              await  this.context.SaveChangesAsync();
                 return p;
             }
             return null;

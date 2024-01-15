@@ -14,7 +14,7 @@ namespace ElectroniqueApi.Services
         {
 
             var result = await this.context.Categories.AddAsync(t);
-            this.context.SaveChangesAsync();
+          await  this.context.SaveChangesAsync();
             return result.Entity;
         }
 
@@ -24,7 +24,7 @@ namespace ElectroniqueApi.Services
             if (p != null)
             {
                 context.Categories.Remove(p);
-                this.context.SaveChangesAsync();
+             await   this.context.SaveChangesAsync();
                 return p;
             }
             return null;
@@ -51,7 +51,7 @@ namespace ElectroniqueApi.Services
                 
 
                
-                this.context.SaveChangesAsync();
+              await  this.context.SaveChangesAsync();
                 return p;
             }
             return null;
