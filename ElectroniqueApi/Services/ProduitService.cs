@@ -14,19 +14,19 @@ namespace ElectroniqueApi.Services
         }
         public async Task<Produit> Add(Produit t)
         {
-            var result = await this.context.Products.AddAsync(t);
-            this.context.SaveChangesAsync();
+            var result = await context.Products.AddAsync(t);
+           await context.SaveChangesAsync();
             return result.Entity;
         }
 
         public async Task<Produit> Delete(int Id)
         {
-            var p = await this.context.Products.FirstOrDefaultAsync(
+            var p = await context.Products.FirstOrDefaultAsync(
             e => e.Id == Id);
             if (p != null)
             {
                 context.Products.Remove(p);
-                this.context.SaveChangesAsync();
+               await context.SaveChangesAsync();
                 return p;
             }
             return null;
@@ -35,7 +35,7 @@ namespace ElectroniqueApi.Services
 
         public async Task<Produit> GetProduit(int Id)
         {
-            return await this.context.Products.FirstOrDefaultAsync(e => e.Id == Id);
+            return await context.Products.FirstOrDefaultAsync(e => e.Id == Id);
         }
 
         public async Task<IEnumerable<Produit>> GetAll()
@@ -59,7 +59,7 @@ namespace ElectroniqueApi.Services
                 p.photo = t.photo;
 
 
-                this.context.SaveChangesAsync();
+               await context.SaveChangesAsync();
                 return p;
             }
             return null;
