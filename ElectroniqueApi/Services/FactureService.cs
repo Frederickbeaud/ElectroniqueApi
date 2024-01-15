@@ -14,8 +14,8 @@ namespace ElectroniqueApi.Services
 
         public async Task<Facture> Add(Facture t)
         {
-            var result = await this.context.Factures.AddAsync(t);
-            this.context.SaveChangesAsync();
+            var result = await context.Factures.AddAsync(t);
+             await  context.SaveChangesAsync();
             return result.Entity;
         }
 
@@ -25,7 +25,7 @@ namespace ElectroniqueApi.Services
             if (p != null)
             {
                 context.Factures.Remove(p);
-                this.context.SaveChangesAsync();
+                await context.SaveChangesAsync();
                 return p;
             }
             return null;
@@ -49,12 +49,14 @@ namespace ElectroniqueApi.Services
             {
               
                 p.Client = t.Client;
-               
+               p.ClientId = t.ClientId;
+                p.DateTime= t.DateTime;
                 
+                                
 
 
 
-                this.context.SaveChangesAsync();
+                await context.SaveChangesAsync();
                 return p;
             }
             return null;

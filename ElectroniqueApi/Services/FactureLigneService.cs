@@ -1,4 +1,5 @@
 ﻿using ElectroniqueApi.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace ElectroniqueApi.Services
 {
@@ -11,27 +12,54 @@ namespace ElectroniqueApi.Services
         }
         public async Task<LigneFacture> Add(LigneFacture t)
         {
-            throw new NotImplementedException();
+            var result = await context.LignesFactures.AddAsync(t);
+            await context.SaveChangesAsync();
+            return result.Entity;
         }
 
         public async Task<LigneFacture> Delete(int Id)
         {
-            throw new NotImplementedException();
+            var p = await this.context.LignesFactures.FirstOrDefaultAsync(e => e.Id == Id);
+            if (p != null)
+            {
+                context.LignesFactures.Remove(p);
+                await context.SaveChangesAsync();
+                return p;
+            }
+            return null;
         }
 
         public async Task<LigneFacture> Get(int Id)
         {
-            throw new NotImplementedException();
+            return await context.LignesFactures.FirstOrDefaultAsync(e => e.Id == Id);
         }
 
         public async Task<IEnumerable<LigneFacture>> GetAll()
         {
-            throw new NotImplementedException();
+            return await context.LignesFactures.ToListAsync();
         }
 
         public async Task<LigneFacture> Update(LigneFacture t)
         {
-            throw new NotImplementedException();
+            var p = await this.context.LignesFactures.FirstOrDefaultAsync(
+             e => e.Id == t.Id);
+            if (p != null)
+            {
+
+                p.Facture = t.Facture;
+                p.Facture = t.Facture;
+                p.Produit = t.Produit;
+                p.ProduitId = t.ProduitId;
+                p.quantité = t.quantité;
+
+
+
+
+
+                await context.SaveChangesAsync();
+                return p;
+            }
+            return null;
         }
     }
 }
