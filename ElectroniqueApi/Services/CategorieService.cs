@@ -47,7 +47,7 @@ namespace ElectroniqueApi.Services
             if (p != null)
             {
                 p.Désignation = t.Désignation;
-                p.produitList = t.produitList;
+               
                 
 
                

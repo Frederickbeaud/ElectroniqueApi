@@ -47,9 +47,9 @@ namespace ElectroniqueApi.Services
              e => e.Id == t.Id);
             if (p != null)
             {
-                p.ligneFactures = t.ligneFactures;
+              
                 p.Client = t.Client;
-                p.ClienId = t.ClienId;
+               
                 
 
 

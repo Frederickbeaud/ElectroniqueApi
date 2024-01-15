@@ -49,7 +49,7 @@ namespace ElectroniqueApi.Services
                 p.Telephone = t.Telephone;
                 p.Address=t.Address;
                 p.City = t.City;
-                p.Factures = t.Factures;
+             
                 p.Email = t.Email;
 
 
