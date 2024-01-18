@@ -16,7 +16,7 @@ namespace ElectroniqueApi.Model
         public int Quantite { get; set; }
         public int? LigneFactureId { get; set; }
         
-        public string Photo { get; set; }
+        public string photo { get; set; }
         public byte CategorieId { get; set; }
         
         public Categorie? Categorie { get; set; }
