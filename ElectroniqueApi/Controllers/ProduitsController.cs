@@ -11,19 +11,23 @@ namespace ElectroniqueApi.Controllers
     public class ProduitsController : ControllerBase
     {
         private readonly IProduitService<Produit> produitService;
-        
+        private readonly ICategorieService<Categorie> categorieService;
+
 
         public ProduitsController(IProduitService<Produit> produitService, ICategorieService<Categorie> categorieService)
-        {
+        {   
             this.produitService = produitService;
-            
+            this.categorieService = categorieService;
         }
 
         // GET: api/<Produit>
         [HttpGet]
         public async Task<IActionResult> Get()
-        {
+        {   
             var p = await produitService.GetAll();
+           
+
+
             return Ok(p);
         }
 

@@ -2,6 +2,7 @@ using ElectroniqueApi.Services;
 using Microsoft.EntityFrameworkCore;
 using ElectroniqueApi.Controllers;
 using ElectroniqueApi.Model;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +35,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.UseCors(builder => builder.WithOrigins("http://localhost:3000"));
+app.UseCors(options =>
+    options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
 app.Run();

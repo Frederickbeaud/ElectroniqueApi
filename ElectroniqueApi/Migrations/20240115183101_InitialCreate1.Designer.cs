@@ -4,6 +4,7 @@ using ElectroniqueApi.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ElectroniqueApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240115183101_InitialCreate1")]
+    partial class InitialCreate1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -108,13 +111,13 @@ namespace ElectroniqueApi.Migrations
                     b.Property<byte>("FactureId")
                         .HasColumnType("tinyint");
 
-                    b.Property<int?>("FactureId1")
+                    b.Property<int>("FactureId1")
                         .HasColumnType("int");
 
                     b.Property<int>("ProduitId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ProduitId1")
+                    b.Property<int>("ProduitId1")
                         .HasColumnType("int");
 
                     b.Property<int>("quantité")
@@ -148,7 +151,7 @@ namespace ElectroniqueApi.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int?>("LigneFactureId")
+                    b.Property<int>("LigneFactureId")
                         .HasColumnType("int");
 
                     b.Property<float>("Prix")
@@ -183,11 +186,15 @@ namespace ElectroniqueApi.Migrations
                 {
                     b.HasOne("ElectroniqueApi.Model.Facture", "Facture")
                         .WithMany()
-                        .HasForeignKey("FactureId1");
+                        .HasForeignKey("FactureId1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("ElectroniqueApi.Model.Produit", "Produit")
                         .WithMany()
-                        .HasForeignKey("ProduitId1");
+                        .HasForeignKey("ProduitId1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Facture");
 
