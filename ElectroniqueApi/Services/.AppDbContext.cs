@@ -1,4 +1,5 @@
 ﻿using ElectroniqueApi.Model;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace ElectroniqueApi.Services

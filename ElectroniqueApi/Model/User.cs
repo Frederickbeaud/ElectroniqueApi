@@ -1,12 +1,13 @@
-﻿namespace ElectroniqueApi.Model
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
+
+namespace ElectroniqueApi.Model
 {
-    public class User
+    public class User:IdentityUser
     {
-        private int Id { get; set; }
-        private string Name { get; set; }
-        private string Telephone { get; set; }
-        private string Address { get; set; }
-        private string City { get; set; }
-        private string Email { get; set; } = string.Empty;
+        [Required,MaxLength(50)]
+       public string FirstName { get; set; }
+        [Required, MaxLength(50)]
+        public string LastName { get; set; }
     }
 }
