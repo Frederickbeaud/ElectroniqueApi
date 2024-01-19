@@ -1,10 +1,12 @@
 ﻿using ElectroniqueApi.Model;
 using ElectroniqueApi.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ElectroniqueApi.Controllers
 {
+    [Authorize(Roles = "User")]
     [Route("api/[controller]")]
     [ApiController]
     public class ClientsController : ControllerBase
@@ -41,6 +43,7 @@ namespace ElectroniqueApi.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Client client)
         {
+            
             await clientService.Add(client);
             return Ok(client);
         }
